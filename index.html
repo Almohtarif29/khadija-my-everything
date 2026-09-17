@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To My Everything, Khadija ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Dancing+Script:wght@700&display=swap');
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffe4e1);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* شاشة الدخول */
+        #entrance {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffb6c1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
+        }
+
+        #entrance h1 {
+            color: #fff;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        #enter-btn {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            color: #ffb6c1;
+            background: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        #enter-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* المحتوى الرئيسي */
+        #main-content {
+            display: none;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 10vh;
+            z-index: 10;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.5);
+            margin: 0;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        /* تأثيرات القلوب والنجوم */
+        .falling-item {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .star {
+            position: fixed;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.2;
+                transform: scale(0.8);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1.2);
+                box-shadow: 0 0 10px #fff;
+            }
+        }
+
+        /* قسم الفيديوهات */
+        .video-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+            z-index: 2;
+            margin-bottom: 80px;
+        }
+
+        .video-wrapper {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            max-width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .video-wrapper:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(255, 182, 193, 0.8);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            border-radius: 15px;
+            outline: none;
+        }
+
+        .video-wrapper p {
+            color: #d81b60;
+            font-family: 'Cairo', sans-serif;
+            margin-top: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* قسم قصة الحب */
+        .story-section {
+            width: 100%;
+            max-width: 900px;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: 'Cairo', sans-serif;
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 42%;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+        }
+
+        .timeline-content h3 {
+            color: #d81b60;
+            margin-top: 0;
+            font-size: 1.5rem;
+            border-bottom: 2px dashed #fff;
+            padding-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 700;
+            margin-bottom: 0;
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 15px rgba(216, 27, 96, 0.5);
+            z-index: 3;
+        }
+
+        /* قسم الشغف المشترك */
+        .passions-section {
+            width: 100%;
+            max-width: 900px;
+            z-index: 2;
+            padding: 0 20px;
+            margin-top: 100px;
+        }
+
+        .passions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .passion-card {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .passion-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(255, 182, 193, 0.8);
+        }
+
+        .passion-img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .passion-card:hover .passion-img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .passion-card h3 {
+            color: #d81b60;
+            font-size: 1.5rem;
+            margin: 10px 0;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+        }
+
+        .passion-card p {
+            color: #444;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* الخاتمة (الجديد) */
+        .footer-section {
+            width: 100%;
+            padding: 60px 20px 40px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
+            margin-top: 100px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .footer-section h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #fff;
+            font-size: 3rem;
+            margin: 0 0 15px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-section p {
+            color: #d81b60;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(216, 27, 96, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 70px);
+            }
+
+            .timeline-icon {
+                min-width: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- شاشة الدخول -->
+    <div id="entrance">
+        <h1>Hello Khadija... 💖✨</h1>
+        <button id="enter-btn">انقري هنا لتبدأ الحكاية 🌸💌</button>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div id="main-content">
+        <h1 class="title">My Everything, Khadija 👑❤️</h1>
+        <h2 class="subtitle">A story written in the stars... ✨🌌</h2>
+
+        <!-- قسم الفيديوهات -->
+        <div class="video-section">
+            <div class="video-wrapper">
+                <video src="eyes.mp4" autoplay loop muted playsinline></video>
+                <p>العيون اللي حمقوني وخططو مستقبلي 🥺❤️✨</p>
+            </div>
+
+            <div class="video-wrapper">
+                <video src="face.mp4" autoplay loop muted playsinline></video>
+                <p>وجه الخير والرزق اللي منور حياتي 🤲💍💖</p>
+            </div>
+        </div>
+
+        <!-- قسم القصة -->
+        <div class="story-section">
+            <h2 class="section-title">كيفاش تلاقينا؟ 📖💞</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">👀💒</div>
+                    <div class="timeline-content">
+                        <h3>أول نظرة في العرس 👰‍♀️🤵‍♂️</h3>
+                        <p>تلاقينا في عرس صاحبي العام اللي فات ✨. عيني جات في عينك 😍، ومن ديك اللحظة سكنتي قلبي 💘 واخا
+                            ما زعمناش ندويو، بقيتي في بالي عام كامل 🕰️💭.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">📱✨</div>
+                    <div class="timeline-content">
+                        <h3>صدفة الانستغرام 💌</h3>
+                        <p>بعد عام، تلاقينا صدفة في الانستغرام 🌍 وبقينا كندويو 💬. المضحك في الأمر أننا ما كناش عارفين
+                            بلي حنا نفس الجوج اللي تلاقاو في العرس 🙈! القدر كان مخبي لينا أجمل مفاجأة 🎁❤️.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">💍🌹</div>
+                    <div class="timeline-content">
+                        <h3>الاعتراف والحب 🥰</h3>
+                        <p>ملي عرفنا الحقيقة، كل واحد فينا اعترف للآخر بمشاعره 🫂. لقيت فيك بنت الناس والزوجة الصالحة
+                            🤲💎، ورزق كبير من عند الله 🕊️. إنتِ My Everything 🌍❤️.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم الشغف المشترك -->
+        <div class="passions-section">
+            <h2 class="section-title">عالمنا المشترك 🌍💑</h2>
+
+            <div class="passions-grid">
+                <div class="passion-card">
+                    <img src="raja.png" alt="Raja Casablanca" class="passion-img">
+                    <h3>الرجاء العالمي</h3>
+                    <p>الخضرا والوطنية، حبنا للرجاء كيزيد يجمعنا 🏟️✨</p>
+                </div>
+
+                <div class="passion-card">
+                    <img src="real.png" alt="Real Madrid" class="passion-img">
+                    <h3>ريال مدريد</h3>
+                    <p>ملوك أوروبا، بحال كيفاش إنتِ ملكة قلبي 🏆💖</p>
+                </div>
+
+                <div class="passion-card">
+                    <img src="moto.png" alt="Motorcycle" class="passion-img">
+                    <h3>عشق الموتورات</h3>
+                    <p>السرعة والمغامرة، طريقنا وحدة ومستقبلنا واحد 🛣️💑</p>
+                </div>
+
+                <div class="passion-card">
+                    <img src="mercedes.png" alt="Mercedes AMG" class="passion-img">
+                    <h3>مرسيدس AMG</h3>
+                    <p>الفخامة، إن شاء الله نجيبوها ونركبوها بجوج 🤲💍</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- الخاتمة -->
+        <div class="footer-section">
+            <h2>Khadija... My Past, My Present, and My Future 🌌</h2>
+            <p>كنواعدك نبقى ديما معاك، في الفرحة وفي القرحة، ونبنيو حياتنا اللي حلمنا بيها بجوج 💍✨</p>
+            <div class="signature">Forever Yours, Abdellah ❤️</div>
+        </div>
+
+    </div>
+
+    <!-- مسار الأغنية -->
+    <audio id="bg-music" loop>
+        <source src="love.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        document.getElementById('enter-btn').addEventListener('click', function () {
+            document.getElementById('bg-music').play();
+
+            const entrance = document.getElementById('entrance');
+            entrance.style.opacity = '0';
+            setTimeout(() => {
+                entrance.style.display = 'none';
+                const mainContent = document.getElementById('main-content');
+                mainContent.style.opacity = '1';
+                mainContent.style.display = 'flex';
+            }, 1000);
+        });
+
+        function createFallingItems() {
+            const items = ['🌸', '❤️', '🤍', '💚'];
+            const item = document.createElement('div');
+            item.classList.add('falling-item');
+
+            item.innerText = items[Math.floor(Math.random() * items.length)];
+            item.style.fontSize = Math.random() * 20 + 10 + 'px';
+            item.style.left = Math.random() * 100 + 'vw';
+            item.style.animationDuration = Math.random() * 5 + 5 + 's';
+
+            document.body.appendChild(item);
+
+            setTimeout(() => {
+                item.remove();
+            }, 10000);
+        }
+
+        function createStars() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = Math.random() * 2 + 1 + 's';
+
+            document.body.appendChild(star);
+        }
+
+        setInterval(createFallingItems, 300);
+        for (let i = 0; i < 100; i++) {
+            createStars();
+        }
+    </script>
+</body>
+
+</html>
